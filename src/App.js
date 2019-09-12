@@ -1,37 +1,16 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import db from './db';
 //import class
 import PageWrapper from './components/PageWrapper';
 import Home from './components/pages/Home';
 import Try from './components/pages/Try';
 import InputPlayer from './components/pages/InputPlayer';
-import mysql from 'mysql';
-
-var connection = mysql.createConnection({
-  host : 'localhost',
-  user :'root',
-  password : '',
-  database : 'knn' 
-});
-
-
+import TryAPI from './components/pages/TryAPI';
 
 class App extends Component{
-  constructor(props){
-    super (props);
-    this.result = {
-      
-    }
-  }
-
-  connecting = () => {
-    connection.connect = (err) => {
-      if (!err) {
-        console.log("Carry on !");
-      } else {
-        console.log("DB hates you");
-      }
-    };
+  constructor(props) {
+    super(props);
   }
   
   render(){
@@ -44,7 +23,7 @@ class App extends Component{
               />
               <Route
                 path="/try"
-                component={Try}
+                component={TryAPI}
               />
               <Route
                 path="/inputPlayer"
